@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: ./api
+    depends_on:
+      - db
+    container_name: api
+    volumes:
+      - ./api:/usr/src/app
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    links:
+      - db
+    environment:
+     - POSTGRES_HOST=db
+     - POSTGRES_USER=user
+     - POSTGRES_PASSWORD=mysecretpassword
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.database
+    container_name: db
+    environment:
+      - POSTGRES_DB=hbooks-dev
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=mysecretpassword
+
+  ui:
+    build:
+      context: ./ui
+    depends_on:
+      - api
+    container_name: ui
+    volumes:
+      - ./ui:/www/war
+    ports:
+      - "5000:3000"
+    links:
+      - api
