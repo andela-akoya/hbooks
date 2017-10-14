@@ -1,0 +1,11 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'test/test_helper.rb'
+    - 'Gemfile'
+    - 'Rakefile'
