@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  validates_presence_of %i[username lastname firstname email]
+  has_secure_password
+  validates_presence_of %i[username lastname firstname email password_digest]
   validates_inclusion_of :is_admin, in: [true, false]
   validates_uniqueness_of %i[username email], case_sensitive: false
 
