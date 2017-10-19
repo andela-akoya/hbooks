@@ -16,8 +16,9 @@ class ApiVersion
   private
 
   def check_headers(headers)
-    # check version from Accept headers; except custom media type `books`
+    # check version from Accept headers; except custom media type `books
     accept = headers[:accept]
-    accept && accept.include?("application/vnd.books.#{version}+json")
+    p accept
+    accept && accept.include?("application/vnd.hbooks.#{version}+json")
   end
 end

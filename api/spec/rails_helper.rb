@@ -2,6 +2,7 @@
 require 'spec_helper'
 require 'database_cleaner'
 require './spec/support/controller_spec_helper'
+require './spec/support/request_spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
@@ -78,4 +79,5 @@ RSpec.configure do |config|
   end
 
   config.include ControllerSpecHelper
+  config.include RequestSpecHelper
 end
